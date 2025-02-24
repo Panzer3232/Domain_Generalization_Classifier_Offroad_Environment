@@ -1,35 +1,48 @@
-# Dataset Transformation Script (`transform.py`)
+# Offroad Tree Dataset Augmentation
 
-Given the limited availability of offroad tree datasets, this Python script, `transform.py`, empowers users to create their own diverse dataset of tree images starting from a small set of original images. By transforming these images into four distinct artistic styles—**photo** (original images), **sketch**, **art_painting** (oil painting effect), and **cartoons**—this script provides a powerful tool for expanding datasets. Whether you're working on domain adaptation, style transfer, or other computer vision projects, this script helps you generate a rich and varied dataset tailored to your needs.
+Since the offroad tree dataset is limited, this script allows you to generate an extended dataset by applying various image transformations. Users can create their own dataset using this script, which reads images from a source directory, splits them into four different classes, and applies unique transformations to each class.
 
-The script uses popular libraries such as OpenCV, NumPy, scikit-image, SciPy, and TensorFlow, with optional GPU support to accelerate certain transformations, making it efficient and adaptable.
+## Table of Contents
 
----
+- [Overview](#overview)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Transformation Details](#transformation-details)
+  - [Photo](#photo)
+  - [Sketch](#sketch)
+  - [Art Painting (Oilify)](#art-painting-oilify)
+  - [Cartoon](#cartoon)
+- [Output Structure](#output-structure)
+- [License](#license)
 
-## Purpose of the Script
+## Overview
 
-- **Expand Limited Data**: If you only have a handful of tree images, this script multiplies their utility by creating artistic variations.
-- **Artistic Diversity**: It transforms images into realistic sketches, oil paintings, and cartoons, opening up possibilities for style-related machine learning tasks.
-- **Speed and Efficiency**: With GPU support for the sketch transformation, processing is fast and scalable.
-- **Flexibility**: Users can tweak class distributions or transformation settings to match their specific project requirements.
+The script (`transform.py`) processes an initial dataset of offroad tree images by randomly splitting and transforming them into four distinct classes:
+- **Photo**: Original images are copied without modification.
+- **Sketch**: Images are converted to a pencil sketch style using TensorFlow GPU acceleration.
+- **Art Painting (Oilify)**: An oil painting effect is applied using randomized elliptical brush strokes.
+- **Cartoon**: A cartoon-style transformation is performed by smoothing colors, detecting edges, and applying color quantization.
 
----
+This approach helps augment the limited dataset and provides a variety of image styles for further analysis or training.
 
-## Prerequisites
+## Requirements
 
-Before running the script, ensure you have the following:
+Ensure you have the following installed:
+- **Python 3.x**
 
-- **Python 3.x**: The script is written in Python and requires a compatible version.
-- **Required Libraries**:
-  - `opencv-python`: For image processing.
-  - `numpy`: For numerical operations.
-  - `scikit-image`: For advanced image manipulation.
-  - `matplotlib`: For visualization (optional, depending on usage).
-  - `scipy`: For scientific computations.
-  - `tensorflow`: For GPU-accelerated transformations.
-- **Optional**: A GPU with CUDA support for faster sketch processing.
+### Python Libraries:
+- TensorFlow
+- OpenCV (`cv2`)
+- NumPy
+- scikit-image
+- Matplotlib
+- SciPy
 
-Install the dependencies with pip:
+Standard libraries used:
+- os, random, shutil, pathlib, collections
+
+You can install the non-standard libraries using pip:
 
 ```bash
-pip install opencv-python numpy scikit-image matplotlib scipy tensorflow
+pip install tensorflow opencv-python numpy scikit-image matplotlib scipy
